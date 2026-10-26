@@ -1,4 +1,6 @@
 from fastapi import FastAPI
+from typing import List
+import schemas
 
 app = FastAPI()
 
@@ -10,7 +12,7 @@ async def root():
     """
     return {"message": "Hello World"}
 
-@app.get("/projects")
+@app.get("/projects", response_model=List[schemas.Project])
 async def get_projects():
     """
     Returns a list of portfolio projects.
